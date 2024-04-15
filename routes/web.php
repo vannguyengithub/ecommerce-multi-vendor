@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +21,6 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
 
 // Admin All Route
 Route::controller(AdminController::class)->group(function () {
@@ -36,8 +31,19 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
+});
 
+// Home Slide All Route
+Route::controller(HomeSliderController::class)->group(function () {
+    Route::get('/home/silde', 'HomeSlider')->name('home.slide');
+    Route::post('/update/silder', 'UpdateSlider')->name('update.slider');
+});
 
+// About All Route
+Route::controller(AboutController::class)->group(function () {
+    Route::get('/about/page', 'AboutPage')->name('about.page');
+    Route::post('/update/about', 'UpdateAbout')->name('update.about');
+    Route::get('/about', 'HomeAbout')->name('home.about');
 });
 
 
