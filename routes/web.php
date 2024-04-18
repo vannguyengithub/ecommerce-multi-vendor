@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\PortfolioController;
+use App\Http\Controllers\Home\BlogCategoryController;
+use App\Http\Controllers\Home\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,8 +66,36 @@ Route::controller(PortfolioController::class)->group(function () {
 
     Route::post('/update/portfolio', 'UpdatePortfolio')->name('update.portfolio');
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
+    Route::get('/portfolio/details/{id}', 'PortfolioDetails')->name('portfolio.details');
+});
+
+// Blog Category All Route
+Route::controller(BlogCategoryController::class)->group(function () {
+    Route::get('/all/blog/category', 'AllBlogCategory')->name('all.blog.category');
+    Route::get('/add/blog/category', 'AddBlogCategory')->name('add.blog.category');
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
+    Route::get('/edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
+
+    Route::post('/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
+    Route::get('/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+});
+
+// Blog All Route
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/all/blog', 'AllBlog')->name('all.blog');
+    Route::get('/add/blog', 'AddBlog')->name('add.blog');
+    Route::post('/store/blog', 'StoreBlog')->name('store.blog');
+    Route::get('/edit/blog/{id}', 'EditBlog')->name('edit.blog');
+    Route::post('/update/blog', 'UpdateBlog')->name('update.blog');
+    Route::get('/delete/blog/{id}', 'DeleteBlog')->name('delete.blog');
+
+    Route::get('/blog/details/{id}', 'BlogDetails')->name('blog.details');
+    Route::get('/category/blog/{id}', 'CategoryBlog')->name('category.blog');
 
 });
+
+
+
 
 
 
