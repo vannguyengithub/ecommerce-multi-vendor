@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Blog Category All</h4>
+                        <h4 class="card-title">Contact All</h4>
                         <hr>
                         <br>
                         <br>
@@ -16,23 +16,29 @@
                             <thead>
                                 <tr>
                                     <th>SL</th>
-                                    <th>blog category</th>
-                                    <th>Action</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Phone</th>
+                                    <th>Message</th>
+                                    <th>Created At</th>
                                 </tr>
                             </thead>
 
 
                             <tbody>
                                 @php($i = 1)
-                                @foreach($blogcategory as $key => $item)
+                                @foreach($contacts as $item)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->blog_category }}</td>
+                                    <td>{{ $i++ }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->subject }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->message }}</td>
+                                    <td>{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</td>
                                     <td>
-                                        <a href="{{ route('edit.blog.category', $item->id) }}" class="btn btn-info sm" title="Edit Data">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{ route('delete.blog.category', $item->id) }}" class="btn btn-danger sm" id="delete" title="Delete Data">
+                                        <a href="{{ route('delete.contact', $item->id) }}" class="btn btn-danger sm" id="delete" title="Delete Data">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
